@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Отель "Уютный уголок"</title>
+<link rel="stylesheet" href="style.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+<header>
+<nav>
+<ul class="nav-list">
+<li><a href="#" class="nav-link active" onclick="showSection('register')">Регистрация</a></li>
+<li><a href="#" class="nav-link" onclick="showSection('main')">Главная</a></li>
+<li><a href="#" class="nav-link" onclick="showSection('booking')">Бронирование</a></li>
+<li><a href="#" class="nav-link" onclick="showSection('contact')">Контакты</a></li>
+</ul>
+</nav>
+</header>&nbsp; &nbsp;
+
+<main class="container">
+<!-- Регистрация -->
+<section id="register" class="page-section">
+<h1>Регистрация</h1>
+<form id="registerForm" class="registration-form">
+<div>
+<label for="regLastName">Фамилия:</label>
+<input type="text" id="regLastName" required />
+</div>
+<div>
+<label for="regFirstName">Имя:</label>
+<input type="text" id="regFirstName" required />
+</div>
+<div>
+<label for="regEmail">Электронная почта:</label>
+<input type="email" id="regEmail" required />
+</div>
+<div>
+<label for="regPassword">Пароль:</label>
+<input type="password" id="regPassword" required />
+</div>
+<div>
+<button type="submit">Зарегистрироваться</button>
+</div>
+</form>
+<div id="regMessage" class="message" style="display:none;"></div>
+</section>
+
+<!-- Главная -->
+<section id="main" class="page-section" style="display:none;">
+<h1>Добро пожаловать в наш Отель «Уютный уголок»</h1>
+<section class="hotel-description">
+<p>Мы рады приветствовать вас в отеле «Уютный уголок» — комфортном месте для отдыха и работы с уютными номерами и современными удобствами.</p>
+<p>Наш отель предлагает различные типы комнат с персональным подходом к каждому гостю.</p>
+</section>
+<section class="room-list-section">
+<h2>Наши комнаты</h2>
+<ul class="room-list">
+<li>Номер 1 — Просторный одноместный номер с шикарным видом</li>
+<li>Номер 2 — Светлый двухместный номер с балконом</li>
+<li>Номер 3 — Трёхместный номер с дополнительной кроватью</li>
+<li>Номер 4 — Люкс с отдельной гостиной зоной и джакузи</li>
+<li>Номер 5 — Студия с кухней для длительного проживания</li>
+<li>Номер 6 — Эконом номер с удобствами</li>
+<li>Номер 7 — Комфортный номер с рабочей зоной</li>
+<li>Номер 8 — Номер с видом на парк</li>
+<li>Номер 9 — Семейный номер с детской кроваткой</li>
+<li>Номер 10 — Апартаменты премиум-класса</li>
+</ul>
+</section>
+<section class="cta-section">
+<a href="#" class="btn btn-primary" onclick="showSection('booking')">Перейти к бронированию</a>
+</section>
+</section>
+
+<!-- Бронирование -->
+<section id="booking" class="page-section" style="display:none;">
+<h1>Бронирование</h1>
+<div id="message" class="message" style="display:none;"></div>
+<!-- Цена -->
+<div class="price-info">
+<p>Стоимость номера: <span id="roomPrice">от 3000 ₽</span></p>
+<button id="showPriceBtn" class="btn btn-secondary">Показать цену</button>
+</div>
+<form id="bookingForm">
+<div>
+<label for="room">Выберите комнату:</label>
+<select id="room" required>
+<option value="" disabled selected>Выберите комнату</option>
+<option value="Room 1" data-price="3000">Комната 1</option>
+<option value="Room 2" data-price="3500">Комната 2</option>
+<option value="Room 3" data-price="4000">Комната 3</option>
+<option value="Room 4" data-price="7000">Комната 4</option>
+<option value="Room 5" data-price="5000">Комната 5</option>
+<option value="Room 6" data-price="2500">Комната 6</option>
+<option value="Room 7" data-price="3800">Комната 7</option>
+<option value="Room 8" data-price="3000">Комната 8</option>
+<option value="Room 9" data-price="4200">Комната 9</option>
+<option value="Room 10" data-price="10000">Комната 10</option>
+</select>
+</div>
+<div>
+<label for="start">Начало бронирования:</label>
+<input type="datetime-local" id="start" required />
+</div>
+<div>
+<label for="end">Конец бронирования:</label>
+<input type="datetime-local" id="end" required />
+</div>
+<div>
+<label for="lastName">Фамилия:</label>
+<input type="text" id="lastName" required />
+</div>
+<div>
+<label for="firstName">Имя:</label>
+<input type="text" id="firstName" required />
+</div>
+<div>
+<label for="patronymic">Отчество:</label>
+<input type="text" id="patronymic" />
+</div>
+<div>
+<label for="phone">Номер телефона:</label>
+<input type="tel" id="phone" required />
+</div>
+<div>
+<label for="email">Электронная почта:</label>
+<input type="email" id="email" required />
+</div>
+<div class="full-width">
+<button type="submit">Забронировать</button>
+</div>
+</form>
+<h2>Текущие бронирования</h2>
+<div class="bookings-list" id="bookingsList">
+<!-- Booking items will appear here -->
+</div>
+</section>
+
+<!-- Контакты -->
+<section id="contact" class="page-section" style="display:none;">
+<h1>Контакты</h1>
+<p>Если у вас есть вопросы, вы можете связаться с нами по следующим контактам:</p>
+<p><strong>Телефон:</strong> +7 (123) 456-78-90</p>
+<p><strong>Электронная почта:</strong> info@uyutnyugolok.ru</p>
+<p>Мы всегда рады помочь вам!</p>
+</section>
+</main>
+
+<footer>
+<p>© 2024 Отель «Уютный уголок». Все права защищены.</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+// Плавное сменение фона
+const colors = ['#FF6B6B', '#4ECDC4', '#C7F464', '#556270', '#4A69A1', '#FF9F1C'];
+let colorIndex = 0;
+function changeBackground() {
+  document.body.style.transition = 'background-color 2s ease';
+  document.body.style.backgroundColor = colors[colorIndex];
+  colorIndex = (colorIndex + 1) % colors.length;
+}
+setInterval(changeBackground, 4000);
+changeBackground(); // начальный цвет
+
+// Переключение секций
+function showSection(sectionId) {
+  const sections = document.querySelectorAll('.page-section');
+  sections.forEach(section => {
+    section.style.display = 'none';
+  });
+  document.getElementById(sectionId).style.display = 'block';
+
+  // Обновляем активную вкладку
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.classList.remove('active');
+  });
+  document.querySelector(`.nav-link[onclick="showSection('${sectionId}')"]`).classList.add('active');
+}
+
+// Регистрация
+const regForm = document.getElementById('registerForm');
+const regMessage = document.getElementById('regMessage');
+regForm.addEventListener('submit', e => {
+  e.preventDefault();
+  // Можно дописать проверку или сохранение
+  regMessage.textContent = 'Регистрация прошла успешно!';
+  regMessage.className = 'message success';
+  regMessage.style.display = 'block';
+  setTimeout(() => {
+    regMessage.style.display = 'none';
+    showSection('main');
+  }, 2000);
+});
+
+// Показ цены
+const showPriceBtn = document.getElementById('showPriceBtn');
+const roomPriceSpan = document.getElementById('roomPrice');
+showPriceBtn.onclick = () => {
+  roomPriceSpan.style.display = 'inline';
+  showPriceBtn.style.display = 'none';
+};
+
+// Логика бронирования
+(() => {
+const form = document.getElementById('bookingForm');
+const roomSelect = document.getElementById('room');
+const startInput = document.getElementById('start');
+const endInput = document.getElementById('end');
+const lastNameInput = document.getElementById('lastName');
+const firstNameInput = document.getElementById('firstName');
+const patronymicInput = document.getElementById('patronymic');
+const phoneInput = document.getElementById('phone');
+const emailInput = document.getElementById('email');
+const messageDiv = document.getElementById('message');
+const bookingsList = document.getElementById('bookingsList');
+
+// Загрузка бронирований
+const storageKey = 'roomBookings';
+let bookings = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+// Обновление цены при выборе комнаты
+roomSelect.onchange = () => {
+  const selectedOption = roomSelect.options[roomSelect.selectedIndex];
+  const price = selectedOption.getAttribute('data-price') || 'от 3000 ₽';
+  document.getElementById('roomPrice').textContent = `от ${price} ₽`;
+  document.getElementById('roomPrice').style.display = 'inline';
+  document.getElementById('showPriceBtn').style.display = 'none';
+};
+
+// Utility функции
+function showMessage(text, type = 'error') {
+  messageDiv.textContent = text;
+  messageDiv.className = 'message ' + type;
+  messageDiv.style.display = 'block';
+  setTimeout(() => {
+    messageDiv.style.display = 'none';
+  }, 4000);
+}
+function formatDateTime(dtStr) {
+  const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' };
+  const dt = new Date(dtStr);
+  return dt.toLocaleString('ru-RU', options);
+}
+function isOverlap(start1, end1, start2, end2) {
+  return (start1 < end2) && (start2 < end1);
+}
+function hasConflict(room, start, end) {
+  for (const b of bookings) {
+    if (b.room === room) {
+      const bStart = new Date(b.start);
+      const bEnd = new Date(b.end);
+      if (isOverlap(start, end, bStart, bEnd)) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+function saveBookings() {
+  localStorage.setItem(storageKey, JSON.stringify(bookings));
+}
+function removeBooking(index) {
+  bookings.splice(index, 1);
+  saveBookings();
+  renderBookings();
+  showMessage('Бронирование удалено', 'success');
+}
+function renderBookings() {
+  bookingsList.innerHTML = '';
+  if (bookings.length === 0) {
+    bookingsList.innerHTML = '<p>Пока нет бронирований.</p>';
+    return;
+  }
+  bookings.forEach((b, index) => {
+    const item = document.createElement('div');
+    item.className = 'booking-item';
+
+    const infoDiv = document.createElement('div');
+    infoDiv.className = 'booking-info';
+
+    const roomEl = document.createElement('div');
+    roomEl.className = 'booking-room';
+    roomEl.textContent = b.room;
+
+    const timeEl = document.createElement('div');
+    timeEl.className = 'booking-time';
+    timeEl.textContent = `${formatDateTime(b.start)} — ${formatDateTime(b.end)}`;
+
+    infoDiv.appendChild(roomEl);
+    infoDiv.appendChild(timeEl);
+
+    const removeBtn = document.createElement('button');
+    removeBtn.className = 'remove-btn';
+    removeBtn.title = 'Удалить бронирование';
+    removeBtn.innerHTML = '&times;';
+    removeBtn.onclick = () => removeBooking(index);
+
+    item.appendChild(infoDiv);
+    item.appendChild(removeBtn);
+
+    bookingsList.appendChild(item);
+  });
+}
+
+// Обработка формы бронирования
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const room = roomSelect.value;
+  const startVal = startInput.value;
+  const endVal = endInput.value;
+  const lastName = lastNameInput.value;
+  const firstName = firstNameInput.value;
+  const patronymic = patronymicInput.value;
+  const phone = phoneInput.value;
+  const email = emailInput.value;
+
+  if (!room) {
+    showMessage('Пожалуйста, выберите комнату.');
+    return;
+  }
+  if (!startVal || !endVal) {
+    showMessage('Пожалуйста, выберите время начала и конца бронирования.');
+    return;
+  }
+  const start = new Date(startVal);
+  const end = new Date(endVal);
+  if (start >= end) {
+    showMessage('Время начала должно быть раньше времени конца.');
+    return;
+  }
+  const now = new Date();
+  if (end <= now) {
+    showMessage('Время бронирования должно быть в будущем.');
+    return;
+  }
+  if (hasConflict(room, start, end)) {
+    showMessage('Эта комната уже забронирована в выбранный период.');
+    return;
+  }
+
+  // Добавляем бронирование
+  bookings.push({ room, start: start.toISOString(), end: end.toISOString(), lastName, firstName, patronymic, phone, email });
+  saveBookings();
+  renderBookings();
+
+  form.reset();
+  document.getElementById('roomPrice').style.display = 'none';
+  showMessage('Комната забронирована успешно!', 'success');
+});
+
+// Изначально показываем первую цену при выборе
+document.getElementById('roomPrice').style.display = 'none';
+
+renderBookings();
+})();
+</script>
+</body>
+</html>
